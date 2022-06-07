@@ -1,0 +1,11 @@
+### Terraform ###
+# Local .terraform directories
+**/.terraform/*
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+### Config files for testing purposes ##
+.aws/*
+.envrc
