@@ -74,6 +74,7 @@ For this exercise, you will need :
   - `vpc`
   - `subnet`
   - `internet_gateway`
+- [ ] The instance is not reated before the Internet Gateway
 - [ ] The module outputs the instance public IP
 - [ ] I have a `dojo-public-instance` module
 - [ ] I have an internet gateway created with terraform
@@ -85,9 +86,10 @@ For this exercise, you will need :
 1. In the `dojo-network` layer add a [`aws_internet_gateway` resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway)
 2. Add a [`aws_route_table`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table) and the [`aws_route_table_association`](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association) needed for your public subnet to use the Internet Gateway
 3. In the `aws-ec2-ubuntu` module add a [`aws_instance`resource](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance) which allows SSH connections
-4. In the `dojo-public-instance` use the `aws-ec2-ubuntu` module to create a public instance
-5. In the `dojo-blueprint`, uncomment line 20-25
-6. Run `terraform init` and `terraform apply`
+4. Use the [`depends_on` meta-argument](https://www.terraform.io/language/meta-arguments/depends_on) to make sure the instance will not be created without an internet gateway
+5. In the `dojo-public-instance` use the `aws-ec2-ubuntu` module to create a public instance
+6. In the `dojo-blueprint`, uncomment line 20-25
+7. Run `terraform init` and `terraform apply`
 
 ## AAOps I have a private instance
 --> refac security group
