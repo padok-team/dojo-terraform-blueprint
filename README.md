@@ -127,3 +127,9 @@ For this exercise, you will need :
 - Run `sudo apt update && sudo apt install -y socat`
 - Run `sudo socat TCP-LISTEN:80,fork TCP4:<PRIVATE_INSTANCE_PRIVATE_IP> 8000`
 - Go to your web browser and enter the IP of your public machine and voilà!
+
+## LICENSE
+
+© 2022 [Padok](https://www.padok.fr/).
+
+Licensed under the [Apache License](https://www.apache.org/licenses/LICENSE-2.0), Version 2.0 ([LICENSE](./LICENSE))
