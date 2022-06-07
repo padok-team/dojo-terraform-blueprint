@@ -117,16 +117,16 @@ For this exercise, you will need :
 
 ### How-to
 
-- Allow connection through the port 8000 on the private instance
-- Allow connection through the port 80 on the public instance
-- Connect to the private instance
-- Create a `web` directory
-- Go to this directory and create a `index.html` file containing `Hello from Padok!` (feel free to change the message)
-- Inside the direcctory run `python3 -m http.server 8000`
-- In an onther terminal, connect to your public instance
-- Run `sudo apt update && sudo apt install -y socat`
-- Run `sudo socat TCP-LISTEN:80,fork TCP4:<PRIVATE_INSTANCE_PRIVATE_IP> 8000`
-- Go to your web browser and enter the IP of your public machine and voilà!
+1. Allow connection through the port 8000 on the private instance
+2. Allow connection through the port 80 on the public instance
+3. Connect to the private instance
+4. Create a `web` directory
+5. Go to this directory and create a `index.html` file containing `Hello from Padok!` (feel free to change the message)
+6. Inside the direcctory run `python3 -m http.server 8000`
+7. In an onther terminal, connect to your public instance
+8. Run `sudo apt update && sudo apt install -y socat`
+9. Run `sudo socat TCP-LISTEN:80,fork TCP4:<PRIVATE_INSTANCE_PRIVATE_IP> 8000`
+10. Go to your web browser and enter the IP of your public machine and voilà!
 
 ## LICENSE
 
