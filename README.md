@@ -12,7 +12,7 @@ For this exercise, you will need :
 - [Terraform 1.1.9](https://learn.hashicorp.com/tutorials/terraform/install-cli)
 - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
-## Step 1: AAOps I have initialize my Terraform codebase
+## Step 1: AAOps I have initialized my Terraform codebase
 
 ### Validation criterias
 
