@@ -4,7 +4,7 @@ locals {
   name = "${local.environment}-private"
 
   private_ip_by_environment = {
-    # ⚠️ Change this 👇, write your unique environment name and tthe private IP you have chosen.
+    # ⚠️ Change this 👇, write your unique environment name and the private IP you have chosen.
     dojo = "172.16.15.100"
   }
 
