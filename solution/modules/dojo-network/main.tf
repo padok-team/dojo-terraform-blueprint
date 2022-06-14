@@ -42,21 +42,12 @@ resource "aws_subnet" "public" {
   }
 }
 
-resource "aws_internet_gateway" "this" {
-  vpc_id = data.aws_vpc.this.id
-
-  tags = {
-    Name = local.environment
-  }
+data "aws_internet_gateway" "this" {
+  internet_gateway_id = "igw-004326a54df37ec99"
 }
 
-resource "aws_route_table" "public" {
-  vpc_id = data.aws_vpc.this.id
-
-  route {
-    cidr_block = "0.0.0.0/0" # Internet
-    gateway_id = aws_internet_gateway.this.id
-  }
+data "aws_route_table" "public" {
+  route_table_id = "rtb-06dcab00c2455ec07"
 }
 
 resource "aws_route_table_association" "public" {
