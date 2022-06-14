@@ -10,10 +10,18 @@ locals {
   private_cidr_by_environment = {
     dojo = "172.16.15.0/24"
   }
+  internet_gateway_id_by_environment = {
+    dojo = "igw-004326a54df37ec99"
+  }
+  route_table_id_by_environment = {
+    dojo = "rtb-06dcab00c2455ec07"
+  }
 
   vpc_id       = local.vpc_id_by_environment[local.environment]
   public_cidr  = local.public_cidr_by_environment[local.environment]
   private_cidr = local.private_cidr_by_environment[local.environment]
+  internet_gateway_id = local.internet_gateway_id_by_environment[local.environment]
+  route_table_id = local.route_table_id_by_environment[local.environment]
 }
 
 data "aws_vpc" "this" {
@@ -43,16 +51,16 @@ resource "aws_subnet" "public" {
 }
 
 data "aws_internet_gateway" "this" {
-  internet_gateway_id = "igw-004326a54df37ec99"
+  internet_gateway_id = local.internet_gateway_id
 }
 
 data "aws_route_table" "public" {
-  route_table_id = "rtb-06dcab00c2455ec07"
+  route_table_id = local.route_table_id
 }
 
 resource "aws_route_table_association" "public" {
   subnet_id      = aws_subnet.public.id
-  route_table_id = aws_route_table.public.id
+  route_table_id = data.aws_route_table.public.id
 }
 
 resource "aws_eip" "nat" {
@@ -66,10 +74,6 @@ resource "aws_nat_gateway" "this" {
   tags = {
     Name = local.environment
   }
-
-  # To ensure proper ordering, it is recommended to add an explicit dependency
-  # on the Internet Gateway for the VPC.
-  depends_on = [aws_internet_gateway.this]
 }
 
 resource "aws_route_table" "private" {

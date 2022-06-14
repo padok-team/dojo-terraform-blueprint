@@ -3,7 +3,7 @@ output "vpc" {
 }
 
 output "internet_gateway" {
-  value = aws_internet_gateway.this
+  value = data.aws_internet_gateway.this
 }
 
 output "public_subnet" {
